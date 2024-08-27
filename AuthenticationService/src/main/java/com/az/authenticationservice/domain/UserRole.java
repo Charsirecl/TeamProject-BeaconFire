@@ -19,7 +19,7 @@ public class UserRole {
     private long id;
 
     @Column(nullable = false)
-    private boolean activeflag;
+    private boolean activeflag = true;
 
     @Column(nullable = false)
     private LocalDateTime createdate;
@@ -35,5 +35,16 @@ public class UserRole {
     @JoinColumn(name = "role_id",nullable = false)
     private Role role;
 
+    @PrePersist
+    protected void onCreate() {
+        this.activeflag = true;  // Default to 'Y' (true)
+        this.createdate = LocalDateTime.now();
+        this.lastmodificationdate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastmodificationdate = LocalDateTime.now();
+    }
 
 }

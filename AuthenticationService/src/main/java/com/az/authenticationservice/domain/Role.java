@@ -1,9 +1,9 @@
 package com.az.authenticationservice.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,6 +15,10 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Role {
 
     @Id
@@ -33,6 +37,19 @@ public class Role {
     @Column(nullable = false)
     private LocalDateTime lastmodificationdate;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "roles")
+    //@JsonBackReference
+    @ToString.Exclude
     private Set<User> users;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdate = LocalDateTime.now();
+        this.lastmodificationdate = this.createdate;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastmodificationdate = LocalDateTime.now();
+    }
 }
