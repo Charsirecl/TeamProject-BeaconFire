@@ -1,6 +1,5 @@
 package com.housingservice.service;
 
-import com.housingservice.dto.FacilityReportDetailDTO;
 import com.housingservice.model.FacilityReportDetail;
 import com.housingservice.repository.FacilityReportDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,33 +14,31 @@ public class FacilityReportDetailService {
     @Autowired
     private FacilityReportDetailRepository facilityReportDetailRepository;
 
-    public List<FacilityReportDetail> getAllReportDetails() {
+
+    public List<FacilityReportDetail> getAllFacilityReportDetails() {
         return facilityReportDetailRepository.findAll();
     }
 
-    public Optional<FacilityReportDetail> getReportDetailById(int id) {
+    public Optional<FacilityReportDetail> getFacilityReportDetailById(Integer id) {
         return facilityReportDetailRepository.findById(id);
     }
 
-    public FacilityReportDetail createReportDetail(FacilityReportDetailDTO facilityReportDetailDTO) {
-        // Logic to create and save a new FacilityReportDetail
-        FacilityReportDetail reportDetail = new FacilityReportDetail();
-        // Map fields from facilityReportDetailDTO to reportDetail
-        return facilityReportDetailRepository.save(reportDetail);
+    public FacilityReportDetail addFacilityReportDetail(FacilityReportDetail facilityReportDetail) {
+        return facilityReportDetailRepository.save(facilityReportDetail);
     }
 
-    public FacilityReportDetail updateReportDetail(int id, FacilityReportDetailDTO facilityReportDetailDTO) {
-        // Logic to update an existing FacilityReportDetail
-        Optional<FacilityReportDetail> reportDetailOptional = facilityReportDetailRepository.findById(id);
-        if (reportDetailOptional.isPresent()) {
-            FacilityReportDetail reportDetail = reportDetailOptional.get();
-            // Update fields with data from facilityReportDetailDTO
-            return facilityReportDetailRepository.save(reportDetail);
-        }
-        return null;
+
+    public FacilityReportDetail updateFacilityReportDetail(FacilityReportDetail facilityReportDetail) {
+        return facilityReportDetailRepository.save(facilityReportDetail);
     }
 
-    public void deleteReportDetail(int id) {
+
+    public void deleteFacilityReportDetail(Integer id) {
         facilityReportDetailRepository.deleteById(id);
+    }
+
+
+    public List<FacilityReportDetail> getFacilityReportDetailsByFacilityReportId(Integer facilityReportId) {
+        return facilityReportDetailRepository.findByFacilityReportId(facilityReportId);
     }
 }

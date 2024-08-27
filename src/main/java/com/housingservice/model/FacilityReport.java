@@ -3,9 +3,15 @@ package com.housingservice.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
-@Table(name = "FacilityReport")
+@Table(name = "facility_report")
 public class FacilityReport {
 
     @Id
@@ -13,34 +19,31 @@ public class FacilityReport {
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "FacilityID", nullable = false)
+    @JoinColumn(name = "facilityid", nullable = false)
     private Facility facility;
 
-    @Column(name = "EmployeeID", nullable = false)
+    @Column(name = "employeeid", nullable = false)
     private Integer employeeID;
 
-    @Column(name = "Title", nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "Description", columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
 
     @OneToMany(mappedBy = "facilityReport", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FacilityReportDetail> facilityReportDetails;
 
-    @Column(name = "CreateDate", nullable = false, updatable = false)
+    @Column(name = "create_date", nullable = false, updatable = false)
     private LocalDateTime createDate;
 
-    @Column(name = "LastModificationDate", nullable = false)
+    @Column(name = "last_modification_date", nullable = false)
     private LocalDateTime lastModificationDate;
 
     // Constructors
-    public FacilityReport() {
-    }
-
     public FacilityReport(Facility facility, Integer employeeID, String title, String description, String status) {
         this.facility = facility;
         this.employeeID = employeeID;
@@ -49,64 +52,6 @@ public class FacilityReport {
         this.status = status;
     }
 
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Facility getFacility() {
-        return facility;
-    }
-
-    public void setFacility(Facility facility) {
-        this.facility = facility;
-    }
-
-    public Integer getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(Integer employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public List<FacilityReportDetail> getFacilityReportDetails() {
-        return facilityReportDetails;
-    }
-
-    public void setFacilityReportDetails(List<FacilityReportDetail> facilityReportDetails) {
-        this.facilityReportDetails = facilityReportDetails;
-    }
-
-    // JPA lifecycle callbacks
     @PrePersist
     protected void onCreate() {
         createDate = LocalDateTime.now();

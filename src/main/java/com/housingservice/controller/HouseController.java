@@ -1,14 +1,48 @@
+//package com.housingservice.controller;
+//
+//import com.housingservice.model.House;
+//import com.housingservice.service.HouseService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
+//@RequestMapping("/api/houses")
+//public class HouseController {
+//
+//    @Autowired
+//    private HouseService houseService;
+//
+//    // View assigned housing details
+//    @GetMapping("/{id}")
+//    public ResponseEntity<House> getHouseDetails(@PathVariable Integer id) {
+//        return houseService.getHouseById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+//
+//    // Users are unable to modify housing details, so no POST/PUT/DELETE methods for House
+//
+//    @PostMapping
+//    public ResponseEntity<House> createHouse(@RequestBody House house) {
+//        House createdHouse = houseService.addHouse(house);
+//        return ResponseEntity.ok(createdHouse);
+//    }
+//}
+
 package com.housingservice.controller;
 
 import com.housingservice.dto.HouseDTO;
 import com.housingservice.model.House;
 import com.housingservice.service.HouseService;
+import com.housingservice.util.HousingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/houses")
@@ -17,31 +51,26 @@ public class HouseController {
     @Autowired
     private HouseService houseService;
 
-    @GetMapping
-    public List<House> getAllHouses() {
-        return houseService.getAllHouses();
+    @Autowired
+    private HousingMapper housingMapper;
+
+    // View assigned housing details
+    @GetMapping("/{id}")
+    public ResponseEntity<HouseDTO> getHouseDetails(@PathVariable Integer id) {
+        return houseService.getHouseById(id)
+                .map(housingMapper::toHouseDTO) // Map to DTO before returning
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<House> getHouseById(@PathVariable int id) {
-        Optional<House> house = houseService.getHouseById(id);
-        return house.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    // Users are unable to modify housing details, so no POST/PUT/DELETE methods for House
 
     @PostMapping
-    public House createHouse(@RequestBody HouseDTO houseDTO) {
-        return houseService.createHouse(houseDTO);
+    public ResponseEntity<HouseDTO> createHouse(@RequestBody HouseDTO houseDTO) {
+        House house = housingMapper.toHouseEntity(houseDTO);
+        House createdHouse = houseService.addHouse(house);
+        HouseDTO createdHouseDTO = housingMapper.toHouseDTO(createdHouse);
+        return ResponseEntity.ok(createdHouseDTO);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<House> updateHouse(@PathVariable int id, @RequestBody HouseDTO houseDTO) {
-        House updatedHouse = houseService.updateHouse(id, houseDTO);
-        return updatedHouse != null ? ResponseEntity.ok(updatedHouse) : ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteHouse(@PathVariable int id) {
-        houseService.deleteHouse(id);
-        return ResponseEntity.noContent().build();
-    }
 }

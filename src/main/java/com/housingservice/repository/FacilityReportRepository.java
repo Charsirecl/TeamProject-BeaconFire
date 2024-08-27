@@ -15,7 +15,7 @@ public interface FacilityReportRepository extends JpaRepository<FacilityReport, 
     List<FacilityReport> findByFacilityId(Integer facilityId);
 
     // Custom query to find reports by employee ID
-    List<FacilityReport> findByEmployeeId(Integer employeeId);
+    List<FacilityReport> findByEmployeeID(Integer employeeID);
 
     // Custom query to find reports by status
     List<FacilityReport> findByStatus(String status);

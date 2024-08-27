@@ -1,51 +1,19 @@
 package com.housingservice.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class FacilityReportDetailDTO {
     private Integer id;
-    private Integer facilityReportId;
-    private Integer employeeId;
     private String comment;
-
-    // Constructors
-    public FacilityReportDetailDTO() {}
-
-    public FacilityReportDetailDTO(Integer id, Integer facilityReportId, Integer employeeId, String comment) {
-        this.id = id;
-        this.facilityReportId = facilityReportId;
-        this.employeeId = employeeId;
-        this.comment = comment;
-    }
-
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getFacilityReportId() {
-        return facilityReportId;
-    }
-
-    public void setFacilityReportId(Integer facilityReportId) {
-        this.facilityReportId = facilityReportId;
-    }
-
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+    private LocalDateTime createDate;
+    private LocalDateTime lastModificationDate;
+    private Integer employeeID;
+    private Integer facilityReportId; // To represent the relationship with FacilityReport entity
 }

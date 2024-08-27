@@ -1,8 +1,9 @@
 package com.housingservice.service;
 
-import com.housingservice.dto.FacilityReportDTO;
 import com.housingservice.model.FacilityReport;
+import com.housingservice.model.Facility;
 import com.housingservice.repository.FacilityReportRepository;
+import com.housingservice.repository.FacilityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,33 +16,40 @@ public class FacilityReportService {
     @Autowired
     private FacilityReportRepository facilityReportRepository;
 
-    public List<FacilityReport> getAllReports() {
+    @Autowired
+    private FacilityRepository facilityRepository;
+
+    public List<FacilityReport> getAllFacilityReports() {
         return facilityReportRepository.findAll();
     }
 
-    public Optional<FacilityReport> getReportById(int id) {
+    public Optional<FacilityReport> getFacilityReportById(Integer id) {
         return facilityReportRepository.findById(id);
     }
 
-    public FacilityReport createReport(FacilityReportDTO facilityReportDTO) {
-        // Logic to create and save a new FacilityReport
-        FacilityReport facilityReport = new FacilityReport();
-        // Map fields from facilityReportDTO to facilityReport
+    public FacilityReport addFacilityReport(FacilityReport facilityReport) {
+        // Ensure the Facility entity is set correctly
+        Optional<Facility> facility = facilityRepository.findById(facilityReport.getFacility().getId());
+        if (facility.isPresent()) {
+            facilityReport.setFacility(facility.get());
+        } else {
+            throw new IllegalArgumentException("Invalid facilityId");
+        }
         return facilityReportRepository.save(facilityReport);
     }
 
-    public FacilityReport updateReport(int id, FacilityReportDTO facilityReportDTO) {
-        // Logic to update an existing FacilityReport
-        Optional<FacilityReport> reportOptional = facilityReportRepository.findById(id);
-        if (reportOptional.isPresent()) {
-            FacilityReport facilityReport = reportOptional.get();
-            // Update fields with data from facilityReportDTO
-            return facilityReportRepository.save(facilityReport);
+    public FacilityReport updateFacilityReport(FacilityReport facilityReport) {
+        // Ensure the Facility entity is set correctly
+        Optional<Facility> facility = facilityRepository.findById(facilityReport.getFacility().getId());
+        if (facility.isPresent()) {
+            facilityReport.setFacility(facility.get());
+        } else {
+            throw new IllegalArgumentException("Invalid facilityId");
         }
-        return null;
+        return facilityReportRepository.save(facilityReport);
     }
 
-    public void deleteReport(int id) {
+    public void deleteFacilityReport(Integer id) {
         facilityReportRepository.deleteById(id);
     }
 }

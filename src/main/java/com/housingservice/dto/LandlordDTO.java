@@ -1,61 +1,20 @@
 package com.housingservice.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class LandlordDTO {
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String cellPhone;
-
-    // Constructors
-    public LandlordDTO() {}
-
-    public LandlordDTO(Integer id, String firstName, String lastName, String email, String cellPhone) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.cellPhone = cellPhone;
-    }
-
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCellPhone() {
-        return cellPhone;
-    }
-
-    public void setCellPhone(String cellPhone) {
-        this.cellPhone = cellPhone;
-    }
+    private LocalDateTime createDate;
+    private LocalDateTime lastModificationDate;
 }

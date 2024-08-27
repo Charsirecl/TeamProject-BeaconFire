@@ -2,31 +2,35 @@ package com.housingservice.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "Landlord")
+@Table(name = "landlord")
 public class Landlord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "FirstName", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "LastName", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "Email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "CellPhone")
+    @Column(name = "cell_phone")
     private String cellPhone;
 
-    @Column(name = "CreateDate", nullable = false, updatable = false)
+    @Column(name = "create_date", nullable = false, updatable = false)
     private LocalDateTime createDate;
 
-    @Column(name = "LastModificationDate", nullable = false)
+    @Column(name = "last_modification_date", nullable = false)
     private LocalDateTime lastModificationDate;
 
     // Constructors
@@ -40,48 +44,8 @@ public class Landlord {
         this.cellPhone = cellPhone;
     }
 
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
+    // Getter and Setter methods
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCellPhone() {
-        return cellPhone;
-    }
-
-    public void setCellPhone(String cellPhone) {
-        this.cellPhone = cellPhone;
-    }
-
-    // JPA lifecycle callbacks
     @PrePersist
     protected void onCreate() {
         createDate = LocalDateTime.now();

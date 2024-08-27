@@ -8,9 +8,10 @@ import java.util.List;
 
 @Repository
 public interface FacilityReportDetailRepository extends JpaRepository<FacilityReportDetail, Integer> {
+
     // Custom query to find details by facility report ID
     List<FacilityReportDetail> findByFacilityReportId(Integer facilityReportId);
 
     // Custom query to find details by employee ID
-    List<FacilityReportDetail> findByEmployeeId(Integer employeeId);
+    List<FacilityReportDetail> findByEmployeeID(Integer employeeID);  // Corrected: matches the entity property name
 }

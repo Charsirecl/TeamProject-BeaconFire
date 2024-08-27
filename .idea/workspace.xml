@@ -1,43 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8619e3b7-ee60-42a1-b5f2-475a25d4d1c8" name="Changes" comment="" />
+    <list default="true" id="14779adb-af2a-4c68-8626-7f03de58f714" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2kzKmlyFOwyjG52vh6fRizW2qqr" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2l89hz695fx4fIvYqOvO4NmehTf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "openjdk-22",
-    "last_opened_file_path": "D:/Beacon Fire/HousingService",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Beacon Fire/HousingService&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;48a8fd362c01ef1489c6dc5f492c22b5&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="TeamProject-BeaconFire" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="TeamProject-BeaconFire" />
-      <option name="filePath" />
+    <configuration name="HousingServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="HousingService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.housingservice.HousingServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -46,16 +65,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8619e3b7-ee60-42a1-b5f2-475a25d4d1c8" name="Changes" comment="" />
-      <created>1724281130899</created>
+      <changelist id="14779adb-af2a-4c68-8626-7f03de58f714" name="Changes" comment="" />
+      <created>1724550961603</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1724281130899</updated>
-      <workItem from="1724281132015" duration="24000" />
-      <workItem from="1724285253860" duration="17000" />
-      <workItem from="1724550925782" duration="38000" />
-      <workItem from="1724697468139" duration="8000" />
-      <workItem from="1724698158263" duration="69000" />
+      <updated>1724550961603</updated>
+      <workItem from="1724550962932" duration="8904000" />
+      <workItem from="1724662807351" duration="948000" />
+      <workItem from="1724698201646" duration="6230000" />
+      <workItem from="1724713091195" duration="8195000" />
+      <workItem from="1724751228579" duration="14381000" />
+      <workItem from="1724770513799" duration="394000" />
     </task>
     <servers />
   </component>
