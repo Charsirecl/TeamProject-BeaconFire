@@ -21,12 +21,12 @@ public class RegistrationTokenRepo extends AbstractHibernateDao<RegistrationToke
         return findById(id);
     }
 
-    public RegistrationToken getLastRegistrationToken() {
-        List<RegistrationToken> registrationTokens = getAllRegistrationTokens();
-        if (registrationTokens.size() > 0) {
-            return registrationTokens.get(registrationTokens.size() - 1);
-        }
-        return null;
+    public void detach(RegistrationToken registrationToken) {
+        getCurrentSession().evict(registrationToken);
+    }
+
+    public RegistrationToken merge(RegistrationToken registrationToken) {
+        return (RegistrationToken) getCurrentSession().merge(registrationToken);
     }
 
 

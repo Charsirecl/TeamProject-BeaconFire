@@ -43,5 +43,9 @@ public abstract class AbstractHibernateDao<T> {
         return sessionFactory.getCurrentSession();
     }
 
+    protected void detach(T item) {
+        getCurrentSession().detach(item);
+    }
+
 }
 

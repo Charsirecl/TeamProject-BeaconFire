@@ -35,6 +35,7 @@ public class UserServiceTest {
                 "$10$KrDXHVhZUmooKqzaiQO6xOYphO1lUZqylm82s7tLyc6yM1jZNG9Vq",
                 LocalDateTime.now(),
                 true,
+                new HashSet<>(),
                 new HashSet<>()
 
         );
