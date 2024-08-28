@@ -29,7 +29,7 @@ public class UserRepo extends AbstractHibernateDao<User> {
 
     public Optional<User> getUserByUsername(String username) {
         return getAllUsers().stream()
-                .filter(user ->username.equals(user.getUsername())).findAny();
+                .filter(user ->username.equals(user.getEmail())).findAny();
 
     }
 }
