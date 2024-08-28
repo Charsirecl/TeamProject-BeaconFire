@@ -52,6 +52,10 @@ public class User {
     @ToString.Exclude
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private Set<RegistrationToken> tokens = new HashSet<>();
+
     @PrePersist
     protected void onCreate() {
         this.createdate = LocalDateTime.now();
