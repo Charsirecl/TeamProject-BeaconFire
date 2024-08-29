@@ -1,15 +1,15 @@
 server:
-  port: 8082  # Port where Housing Service runs
+  port: 8082
 
 spring:
   application:
-    name: housing-service  # This is the name that will be used to register the service with Eureka
+    name: housing-service
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/  # URL of the Eureka Server
-    register-with-eureka: true  # Ensure that the service registers with Eureka
-    fetch-registry: true  # Fetch the registry information from Eureka
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
   instance:
-    prefer-ip-address: true  # Register with IP address instead of hostname
+    prefer-ip-address: true  
