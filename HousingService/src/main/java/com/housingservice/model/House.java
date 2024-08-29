@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +34,7 @@ public class House {
     private String description;
 
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Prevents infinite recursion
     private List<Facility> facilities;
 
     @Column(name = "create_date", nullable = false, updatable = false)
@@ -41,11 +43,9 @@ public class House {
     @Column(name = "last_modification_date", nullable = false)
     private LocalDateTime lastModificationDate;
 
-    // No-argument constructor
     public House() {
     }
 
-    // Constructor with fields
     public House(Landlord landlord, String address, Integer maxOccupant, String description) {
         this.landlord = landlord;
         this.address = address;
@@ -53,13 +53,11 @@ public class House {
         this.description = description;
     }
 
-    // Custom setter for landlordId
     public void setLandlordId(Integer landlordId) {
         this.landlord = new Landlord();
         this.landlord.setId(landlordId);
     }
 
-    // Getter for landlordId for compatibility
     public Integer getLandlordId() {
         return this.landlord != null ? this.landlord.getId() : null;
     }

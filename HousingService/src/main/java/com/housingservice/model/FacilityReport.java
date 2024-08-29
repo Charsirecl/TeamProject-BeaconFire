@@ -3,6 +3,8 @@ package com.housingservice.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -20,10 +22,11 @@ public class FacilityReport {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "facilityid", nullable = false)
+    @JsonManagedReference
     private Facility facility;
 
     @Column(name = "employeeid", nullable = false)
-    private Integer employeeID;
+    private String employeeID;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -43,8 +46,7 @@ public class FacilityReport {
     @Column(name = "last_modification_date", nullable = false)
     private LocalDateTime lastModificationDate;
 
-    // Constructors
-    public FacilityReport(Facility facility, Integer employeeID, String title, String description, String status) {
+    public FacilityReport(Facility facility, String employeeID, String title, String description, String status) {
         this.facility = facility;
         this.employeeID = employeeID;
         this.title = title;

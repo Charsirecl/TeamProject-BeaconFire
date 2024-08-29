@@ -12,12 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 public class FacilityReportDTO {
     private Integer id;
-    private Integer facilityId; // To represent the relationship with Facility entity
-    private Integer employeeID;
+    private Integer facilityId;
+    private String employeeID;
+    private String employeeName;
     private String title;
     private String description;
     private String status;
     private LocalDateTime createDate;
     private LocalDateTime lastModificationDate;
-    private List<FacilityReportDetailDTO> facilityReportDetails; // To include associated report details
+    private List<FacilityReportDetailDTO> facilityReportDetails;
 }

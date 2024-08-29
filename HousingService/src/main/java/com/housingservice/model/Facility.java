@@ -3,6 +3,8 @@ package com.housingservice.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ public class Facility {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "houseid", nullable = false)
+    @JsonBackReference
     private House house;
 
     @Column(name = "type", nullable = false)
@@ -38,9 +41,9 @@ public class Facility {
     private LocalDateTime lastModificationDate;
 
     @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<FacilityReport> facilityReports;
 
-    // Constructor with fields
     public Facility(House house, String type, Integer quantity, String description) {
         this.house = house;
         this.type = type;

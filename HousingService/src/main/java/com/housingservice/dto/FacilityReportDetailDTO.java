@@ -14,6 +14,7 @@ public class FacilityReportDetailDTO {
     private String comment;
     private LocalDateTime createDate;
     private LocalDateTime lastModificationDate;
-    private Integer employeeID;
-    private Integer facilityReportId; // To represent the relationship with FacilityReport entity
+    private String employeeID;
+    private String employeeName;
+    private Integer facilityReportId;
 }

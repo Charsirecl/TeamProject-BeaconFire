@@ -40,7 +40,6 @@ public class FacilityService {
     }
 
     public Facility updateFacility(Facility facility) {
-        // Ensure the House entity is set correctly
         Optional<House> house = houseRepository.findById(facility.getHouse().getId());
         if (house.isPresent()) {
             facility.setHouse(house.get());
@@ -48,17 +47,14 @@ public class FacilityService {
             throw new IllegalArgumentException("Invalid houseId");
         }
 
-        // Ensure the facilityReports collection is managed properly
         Facility existingFacility = facilityRepository.findById(facility.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Facility not found"));
 
-        // Update the facilityReports only if provided; otherwise, retain the existing ones
         if (facility.getFacilityReports() != null) {
             existingFacility.getFacilityReports().clear();
             existingFacility.getFacilityReports().addAll(facility.getFacilityReports());
         }
 
-        // Update other fields
         existingFacility.setType(facility.getType());
         existingFacility.setQuantity(facility.getQuantity());
         existingFacility.setDescription(facility.getDescription());

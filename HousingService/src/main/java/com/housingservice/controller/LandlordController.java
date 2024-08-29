@@ -13,12 +13,10 @@ public class LandlordController {
     @Autowired
     private LandlordService landlordService;
 
-    // Create a new Landlord
     @PostMapping
     public ResponseEntity<Landlord> createLandlord(@RequestBody Landlord landlord) {
         Landlord createdLandlord = landlordService.addLandlord(landlord);
         return ResponseEntity.ok(createdLandlord);
     }
 
-    // Additional methods for getting and managing landlords can be added here if needed
 }

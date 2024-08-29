@@ -2,6 +2,8 @@ package com.housingservice.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "landlord")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Landlord {
 
     @Id
@@ -33,7 +36,7 @@ public class Landlord {
     @Column(name = "last_modification_date", nullable = false)
     private LocalDateTime lastModificationDate;
 
-    // Constructors
+
     public Landlord() {
     }
 
@@ -43,8 +46,6 @@ public class Landlord {
         this.email = email;
         this.cellPhone = cellPhone;
     }
-
-    // Getter and Setter methods
 
     @PrePersist
     protected void onCreate() {

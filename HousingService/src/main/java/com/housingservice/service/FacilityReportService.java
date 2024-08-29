@@ -28,7 +28,6 @@ public class FacilityReportService {
     }
 
     public FacilityReport addFacilityReport(FacilityReport facilityReport) {
-        // Ensure the Facility entity is set correctly
         Optional<Facility> facility = facilityRepository.findById(facilityReport.getFacility().getId());
         if (facility.isPresent()) {
             facilityReport.setFacility(facility.get());
@@ -39,7 +38,6 @@ public class FacilityReportService {
     }
 
     public FacilityReport updateFacilityReport(FacilityReport facilityReport) {
-        // Ensure the Facility entity is set correctly
         Optional<Facility> facility = facilityRepository.findById(facilityReport.getFacility().getId());
         if (facility.isPresent()) {
             facilityReport.setFacility(facility.get());

@@ -21,7 +21,6 @@ public class FacilityController {
     @Autowired
     private HousingMapper housingMapper;
 
-    // View all facilities
     @GetMapping
     public ResponseEntity<List<FacilityDTO>> getAllFacilities() {
         List<FacilityDTO> facilities = facilityService.getAllFacilities()
@@ -31,7 +30,6 @@ public class FacilityController {
         return ResponseEntity.ok(facilities);
     }
 
-    // View a specific Facility by ID
     @GetMapping("/{id}")
     public ResponseEntity<FacilityDTO> getFacilityById(@PathVariable Integer id) {
         return facilityService.getFacilityById(id)
@@ -40,7 +38,6 @@ public class FacilityController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Create a new Facility
     @PostMapping
     public ResponseEntity<FacilityDTO> createFacility(@RequestBody FacilityDTO facilityDTO) {
         Facility facility = housingMapper.toFacilityEntity(facilityDTO);
@@ -48,7 +45,6 @@ public class FacilityController {
         return ResponseEntity.ok(housingMapper.toFacilityDTO(createdFacility));
     }
 
-    // Update an existing Facility
     @PutMapping("/{id}")
     public ResponseEntity<FacilityDTO> updateFacility(
             @PathVariable Integer id,
@@ -59,7 +55,6 @@ public class FacilityController {
         return ResponseEntity.ok(housingMapper.toFacilityDTO(updatedFacility));
     }
 
-    // Delete a Facility
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFacility(@PathVariable Integer id) {
         facilityService.deleteFacility(id);

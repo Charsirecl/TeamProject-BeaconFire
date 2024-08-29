@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface FacilityRepository extends JpaRepository<Facility, Integer> {
-    // Custom query to find facilities by house ID
     List<Facility> findByHouseId(Integer houseId);
 }

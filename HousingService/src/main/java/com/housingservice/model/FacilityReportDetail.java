@@ -28,14 +28,13 @@ public class FacilityReportDetail {
     private LocalDateTime lastModificationDate;
 
     @Column(name = "employeeid", nullable = false)
-    private Integer employeeID;
+    private String employeeID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "facility_reportid", nullable = false)
     private FacilityReport facilityReport;
 
-    // Constructor with fields
-    public FacilityReportDetail(FacilityReport facilityReport, Integer employeeID, String comment) {
+    public FacilityReportDetail(FacilityReport facilityReport, String employeeID, String comment) {
         this.facilityReport = facilityReport;
         this.employeeID = employeeID;
         this.comment = comment;

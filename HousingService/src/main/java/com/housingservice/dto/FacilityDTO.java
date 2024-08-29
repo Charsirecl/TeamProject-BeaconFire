@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class FacilityDTO {
     private Integer id;
-    private Integer houseId; // To represent the relationship with House entity
+    private String houseId;
     private String type;
     private Integer quantity;
     private String description;
