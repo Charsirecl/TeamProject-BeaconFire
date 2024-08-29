@@ -1,0 +1,14 @@
+server:
+  port: 8761  # Port where the Eureka server will run
+
+eureka:
+  client:
+    register-with-eureka: false  # Eureka server itself does not need to register with Eureka
+    fetch-registry: false  # Eureka server doesn't need to fetch registry
+  server:
+    wait-time-in-ms-when-sync-empty: 0  # Reduce startup time
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
