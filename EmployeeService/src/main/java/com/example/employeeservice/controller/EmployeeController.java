@@ -23,7 +23,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/{employeeId}")
+    @GetMapping("/custom/{employeeId}")
     public Employee getEmployeeByIdCustom(@PathVariable String employeeId) {
         return employeeService.getEmployeeByIdCustom(employeeId);
     }

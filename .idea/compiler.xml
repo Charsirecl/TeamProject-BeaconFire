@@ -10,14 +10,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HousingService" />
         <module name="EmailService" />
-        <module name="AuthenticationService" />
-        <module name="Eureka" />
         <module name="EmployeeService" />
         <module name="GatewayService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AuthenticationService" target="1.8" />
+      <module name="Eureka" target="1.8" />
+      <module name="HousingService" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
