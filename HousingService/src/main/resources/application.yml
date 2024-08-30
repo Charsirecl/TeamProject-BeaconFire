@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: housing-service
+  mvc:
+    servlet:
+      path: /housing-service
 
 eureka:
   client:
@@ -12,4 +15,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
   instance:
-    prefer-ip-address: true  
+    hostname: localhost
+  #    prefer-ip-address: true
+
