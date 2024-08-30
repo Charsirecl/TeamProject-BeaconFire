@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 import java.util.Map;
 
-@FeignClient(name = "EMPLOYEESERVICE")
+@FeignClient(name = "EmployeeService")
 public interface EmployeeClient {
 
-    @GetMapping("/api/employees/house/{houseId}")
+    @GetMapping("EmployeeService/api/employees/house/{houseId}")
     List<Map<String, Object>> getEmployeesByHouseId(@PathVariable("houseId") Integer houseId);
 
-    @GetMapping("/api/employees/{id}")
+    @GetMapping("EmployeeService/api/employees/{id}")
     Map<String, Object> getEmployeeById(@PathVariable("id") String employeeId);
 }

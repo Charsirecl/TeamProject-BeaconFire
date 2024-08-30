@@ -14,6 +14,7 @@
         <module name="EmailService" />
         <module name="AuthenticationService" />
         <module name="Eureka" />
+        <module name="EmployeeService" />
         <module name="GatewayService" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AuthenticationService" options="-parameters" />
       <module name="EmailService" options="-parameters" />
+      <module name="EmployeeService" options="-parameters" />
       <module name="Eureka" options="-parameters" />
       <module name="GatewayService" options="-parameters" />
       <module name="HousingService" options="-parameters" />

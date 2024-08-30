@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/AuthenticationService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/EmailService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/EmployeeService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/GatewayService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/HousingService/src/main/java" charset="UTF-8" />
