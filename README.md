@@ -16,8 +16,8 @@ Team:Yizheng Wang, Mary Yang and Charles Li
 
 ## Links
 - PPT https://docs.google.com/presentation/d/1yPzCTWQRZubsmM6-aze-MemQufYNSg8wQ_x30mC_ToI/edit?usp=sharing
-- Swagger Screenshot [https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Swagger_ScreenShots.pdf](https://diamond-quokka-0cf.notion.site/Swagger-ScreenShots-468f5e0072364eec9dfb02966d5ed9b4?pvs=4)
-- jacoco [https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Jacoco_Coverage.pdf](https://diamond-quokka-0cf.notion.site/Jacoco-Coverage-c6bb34f5292743cfb918ce8fd7f8c652?pvs=4)
+- Swagger Screenshot https://diamond-quokka-0cf.notion.site/Swagger-ScreenShots-468f5e0072364eec9dfb02966d5ed9b4?pvs=4
+- jacoco https://diamond-quokka-0cf.notion.site/Jacoco-Coverage-c6bb34f5292743cfb918ce8fd7f8c652?pvs=4
 
 ### Features
 #### Employee Features
