@@ -154,6 +154,25 @@ public class EmployeeService {
         });
     }
 
+     public EmployeeProfileSummary getEmployeeProfileById(String employeeId) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + employeeId));
+
+        String workAuthorizationTitle = employee.getVisaStatus().stream()
+                .filter(VisaStatus::getActiveFlag)
+                .map(VisaStatus::getVisaType)
+                .findFirst()
+                .orElse("N/A");
+
+        return new EmployeeProfileSummary(
+                employee.getLegalFullName(),
+                employee.getSsn(),
+                workAuthorizationTitle,
+                employee.getCellPhone(),
+                employee.getEmail()
+        );
+    }
+    
     public Map<String, Object> getEmployeeDetails(String employeeId) {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
