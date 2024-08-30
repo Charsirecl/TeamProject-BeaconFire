@@ -10,6 +10,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="HousingService" />
         <module name="EmailService" />
         <module name="AuthenticationService" />
         <module name="Eureka" />
