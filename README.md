@@ -15,9 +15,9 @@ Team:Yizheng Wang, Mary Yang and Charles Li
 - AWS S3: All file storage, such as uploaded documents and images, is managed using AWS S3 buckets.
 
 ## Links
-PPT https://docs.google.com/presentation/d/1yPzCTWQRZubsmM6-aze-MemQufYNSg8wQ_x30mC_ToI/edit?usp=sharing
-Swagger Screenshot https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Swagger_ScreenShots.pdf
-jacoco https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Jacoco_Coverage.pdf
+- PPT https://docs.google.com/presentation/d/1yPzCTWQRZubsmM6-aze-MemQufYNSg8wQ_x30mC_ToI/edit?usp=sharing
+- Swagger Screenshot https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Swagger_ScreenShots.pdf
+- jacoco https://github.com/Charsirecl/TeamProject-BeaconFire/blob/main/Jacoco_Coverage.pdf
 
 ### Features
 #### Employee Features
