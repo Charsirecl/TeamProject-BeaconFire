@@ -1,5 +1,6 @@
 # TeamProject-BeaconFire
-Team:Yizheng Wang, Mary Yang and Charles Li
+https://github.com/Charsirecl/TeamProject-BeaconFire?tab=readme-ov-file
+Team: Yizheng Wang, Mary Yang and Charles Li
 
 ## Overview
 - This backend-focused project utilizes a microservice architecture for building an Employee and HR Management Portal.
