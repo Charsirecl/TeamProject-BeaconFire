@@ -65,5 +65,14 @@ public class EmployeeController {
         Page<EmployeeVisaStatusResponse> visaStatuses = employeeService.getActiveVisaEmployees(pageable);
         return ResponseEntity.ok(visaStatuses);
     }
+
+    @GetMapping("/profile/{employeeId}")
+    public ResponseEntity<EmployeeProfileSummary> getEmployeeProfileById(@PathVariable String employeeId) {
+        EmployeeProfileSummary employeeProfile = employeeService.getEmployeeProfileById(employeeId);
+        if (employeeProfile == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(employeeProfile);
+    }
 }
 
