@@ -1,15 +1,15 @@
 package com.example.employeeservice.service;
 
 import com.example.employeeservice.domain.Employee;
+import com.example.employeeservice.domain.PersonalDocument;
+import com.example.employeeservice.domain.VisaStatus;
+import com.example.employeeservice.repository.EmployeeDAO;
 import com.example.employeeservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-<<<<<<< Updated upstream
-=======
 import java.util.Optional;
->>>>>>> Stashed changes
 
 @Service
 public class EmployeeService {
@@ -17,14 +17,15 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private EmployeeDAO employeeDAO;
+
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
-<<<<<<< Updated upstream
-=======
 
     public Employee getEmployeeById(String id) {
-        return employeeRepository.findById(id).orElse(null);
+        return employeeDAO.findByCustomId(id).orElse(null);
     }
 
     public Employee createOrUpdateEmployee(Employee employee) {
@@ -57,6 +58,5 @@ public class EmployeeService {
             return employeeRepository.save(employee);
         }
     }
->>>>>>> Stashed changes
 }
 

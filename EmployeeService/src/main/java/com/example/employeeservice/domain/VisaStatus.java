@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class VisaStatus {
+
     private String id;
     private String visaType;
     private Boolean activeFlag;
