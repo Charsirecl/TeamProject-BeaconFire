@@ -1,0 +1,165 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=18360, tid=0x000000000000170c
+#
+# JRE version:  (8.0_202-b08) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.202-b08 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000003248000):  JavaThread "Unknown thread" [_thread_in_vm, id=5900, stack(0x0000000003140000,0x0000000003240000)]
+
+Stack: [0x0000000003140000,0x0000000003240000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000003248000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=5900, stack(0x0000000003140000,0x0000000003240000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000006c3600000, size: 4042 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 75776K, used 1300K [0x000000076bd00000, 0x0000000771180000, 0x00000007c0000000)
+  eden space 65024K, 2% used [0x000000076bd00000,0x000000076be451f8,0x000000076fc80000)
+  from space 10752K, 0% used [0x0000000770700000,0x0000000770700000,0x0000000771180000)
+  to   space 10752K, 0% used [0x000000076fc80000,0x000000076fc80000,0x0000000770700000)
+ ParOldGen       total 173568K, used 0K [0x00000006c3600000, 0x00000006cdf80000, 0x000000076bd00000)
+  object space 173568K, 0% used [0x00000006c3600000,0x00000006c3600000,0x00000006cdf80000)
+ Metaspace       used 786K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 76K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x0000000012800000,0x0000000012ff0000] byte_map_base: 0x000000000f1e5000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000051a95ce0
+ Begin Bits: [0x0000000013d40000, 0x0000000017c68000)
+ End Bits:   [0x0000000017c68000, 0x000000001bb90000)
+
+Polling page: 0x0000000001480000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000003440000, 0x00000000036b0000, 0x0000000012440000]
+ total_blobs=58 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.031 loading class java/lang/Short
+Event: 0.031 loading class java/lang/Short done
+Event: 0.031 loading class java/lang/Integer
+Event: 0.031 loading class java/lang/Integer done
+Event: 0.031 loading class java/lang/Long
+Event: 0.032 loading class java/lang/Long done
+Event: 0.032 loading class java/lang/NullPointerException
+Event: 0.032 loading class java/lang/NullPointerException done
+Event: 0.032 loading class java/lang/ArithmeticException
+Event: 0.032 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff67d640000 - 0x00007ff67d677000 	F:\yongyou\balasu\home\ufjdk\bin\java.exe
+0x00007ff89af90000 - 0x00007ff89b188000 	C:\windows\SYSTEM32\ntdll.dll
+0x00007ff899ce0000 - 0x00007ff899da1000 	C:\windows\System32\KERNEL32.DLL
+0x00007ff898990000 - 0x00007ff898c8d000 	C:\windows\System32\KERNELBASE.dll
+0x00007ff89a050000 - 0x00007ff89a100000 	C:\windows\System32\ADVAPI32.dll
+0x00007ff89a350000 - 0x00007ff89a3ee000 	C:\windows\System32\msvcrt.dll
+0x00007ff89a2b0000 - 0x00007ff89a350000 	C:\windows\System32\sechost.dll
+0x00007ff899bb0000 - 0x00007ff899cd3000 	C:\windows\System32\RPCRT4.dll
+0x00007ff898930000 - 0x00007ff898957000 	C:\windows\System32\bcrypt.dll
+0x00007ff89adb0000 - 0x00007ff89af4d000 	C:\windows\System32\USER32.dll
+0x00007ff898960000 - 0x00007ff898982000 	C:\windows\System32\win32u.dll
+0x00007ff898fc0000 - 0x00007ff898feb000 	C:\windows\System32\GDI32.dll
+0x00007ff898ea0000 - 0x00007ff898fb7000 	C:\windows\System32\gdi32full.dll
+0x00007ff898d90000 - 0x00007ff898e2d000 	C:\windows\System32\msvcp_win.dll
+0x00007ff8987a0000 - 0x00007ff8988a0000 	C:\windows\System32\ucrtbase.dll
+0x00007ff897ae0000 - 0x00007ff897d7a000 	C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ff899b80000 - 0x00007ff899baf000 	C:\windows\System32\IMM32.DLL
+0x0000000051b20000 - 0x0000000051bf2000 	F:\yongyou\balasu\home\ufjdk\jre\bin\msvcr100.dll
+0x0000000051270000 - 0x0000000051b15000 	F:\yongyou\balasu\home\ufjdk\jre\bin\server\jvm.dll
+0x00007ff89a1f0000 - 0x00007ff89a1f8000 	C:\windows\System32\PSAPI.DLL
+0x00007ff88c180000 - 0x00007ff88c1a7000 	C:\windows\SYSTEM32\WINMM.dll
+0x00007ff8962b0000 - 0x00007ff8962ba000 	C:\windows\SYSTEM32\VERSION.dll
+0x00007ff874a70000 - 0x00007ff874a79000 	C:\windows\SYSTEM32\WSOCK32.dll
+0x00007ff899b10000 - 0x00007ff899b7b000 	C:\windows\System32\WS2_32.dll
+0x00007ff88d2e0000 - 0x00007ff88d2ef000 	F:\yongyou\balasu\home\ufjdk\jre\bin\verify.dll
+0x00007ff871f80000 - 0x00007ff871fa9000 	F:\yongyou\balasu\home\ufjdk\jre\bin\java.dll
+0x00007ff88cae0000 - 0x00007ff88cb15000 	F:\yongyou\balasu\home\ufjdk\jre\bin\jdwp.dll
+0x00007ff891110000 - 0x00007ff891118000 	F:\yongyou\balasu\home\ufjdk\jre\bin\npt.dll
+0x00007ff8717d0000 - 0x00007ff8717f3000 	F:\yongyou\balasu\home\ufjdk\jre\bin\instrument.dll
+0x00007ff88cbc0000 - 0x00007ff88cbd6000 	F:\yongyou\balasu\home\ufjdk\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:1301,suspend=y,server=n -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dmanagement.endpoints.jmx.exposure.include=* -javaagent:C:\Users\lenovo\AppData\Local\JetBrains\IntelliJIdea2024.1\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 
+java_command: com.az.emailservice.EmailServiceApplication
+java_class_path (initial): F:\yongyou\balasu\home\ufjdk\jre\lib\charsets.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\deploy.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\access-bridge-64.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\cldrdata.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\dnsns.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\jaccess.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\jfxrt.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\localedata.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\nashorn.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\sunec.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\sunjce_provider.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\sunmscapi.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\sunpkcs11.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\ext\zipfs.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\javaws.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\jce.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\jfr.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\jfxswt.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\jsse.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\management-agent.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\plugin.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\resources.jar;F:\yongyou\balasu\home\ufjdk\jre\lib\rt.jar;F:\beaconfire\Aug21_TeamProject\TeamProject-BeaconFire\EmailService\target\classes;C:\Users\lenovo\.m2\repository\org\springframework\boot\spring-boot-starter\2.6.4\spring-boot-starter-2.6.4.jar;C:\Users\lenovo\.m2\repository\org\springframework\boot\spring-boot\2.6.4\spring-boot-2.6.4.jar;C:\Users\lenovo\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.6.4\spring-boot-autoconfigure-2.6.4.jar;C:\Users\lenovo\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.6.4\spring-boot-starter-logging-2.6.4.jar;C:\Users\lenovo\.m2\repository\ch\qos\logback\logback-classic\1.2.10\logback-classic-1.2.10.jar;C:\Users\lenovo\.m2\repository\ch\qos\logback\logback-core\1.2.10\logback-core-1.2.10.jar;C:\Users\lenovo\.m2\repository\org\apache\logging\log4j\lo
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\amazonCorretto\jdk17.0.4_8
+PATH=D:\oracle\bin;D:\amazonCorretto\jdk17.0.4_8\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\BONC\DSS\Statistics\25\JRE\bin;F:\uwt\558appliedDistributedComputing\hw1\apache-maven-3.8.6\bin;D:\Python;D:\python\Scripts;D:\python\lib\site-packages\pyspark;D:\nodejs\;F:\yongyou\balasu\home\ufjdk;D:\rabbitMQ\Erlang OTP\bin;D:\rabbitMQ\rabbitmq_server-3.13.6\sbin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;D:\python\Scripts\;D:\python\;C:\Users\lenovo\AppData\Local\Microsoft\WindowsApps;D:\pycharm\PyCharm Community Edition 2022.1.3\bin;;D:\vscode\Microsoft VS Code\bin;C:\Users\lenovo\AppData\Roaming\npm;C:\Users\lenovo\AppData\Local\GitHubDesktop\bin;E:\anaconda;E:\anaconda\Scripts;
+USERNAME=lenovo
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 19041 (10.0.19041.4717)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 140 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16555320k(3919792k free), swap 29662644k(4632k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.202-b08) for windows-amd64 JRE (1.8.0_202-b08), built on Dec 15 2018 19:54:30 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Fri Aug 30 07:34:50 2024
+timezone: Ì«Æ½ÑóÏÄÁîÊ±
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

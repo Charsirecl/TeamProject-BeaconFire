@@ -28,6 +28,17 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String path = request.getRequestURI();
         System.out.println(path);
+
+        // Skip Swagger paths
+        if (request.getRequestURI().startsWith("/swagger-ui") ||
+                request.getRequestURI().startsWith("/v3/api-docs") ||
+                request.getRequestURI().equals("/swagger-ui.html") ||
+                request.getRequestURI().startsWith("/webjars") ||
+                request.getRequestURI().startsWith("/swagger-resources")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         //skip login
         if ("/authentication-service/auth/login".equals(path)) {
             filterChain.doFilter(request, response);

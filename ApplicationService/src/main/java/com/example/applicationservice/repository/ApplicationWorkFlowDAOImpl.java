@@ -4,6 +4,10 @@ import com.example.applicationservice.domain.ApplicationWorkFlow;
 //import jakarta.persistence.*;
 import javax.persistence.*;
 
+import com.example.applicationservice.domain.EmailRequest;
+import com.example.applicationservice.util.SerializeUtil;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +26,9 @@ public class ApplicationWorkFlowDAOImpl implements ApplicationWorkFlowDAO {
 //        Session session = sessionFactory.getCurrentSession();
 //        return session.createQuery("from ApplicationWorkFlow", ApplicationWorkFlow.class).list();
 //    }
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -64,6 +71,11 @@ public class ApplicationWorkFlowDAOImpl implements ApplicationWorkFlowDAO {
                     existing.setStatus(applicationWorkFlow.getStatus());
                     existing.setComment(applicationWorkFlow.getComment());
                     existing.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
+
+                    if ("Rejected".equalsIgnoreCase(applicationWorkFlow.getStatus())) {
+                        sendEmailAsync(applicationWorkFlow);
+                    }
+
                     return entityManager.merge(existing);
                 }
             }
@@ -74,6 +86,17 @@ public class ApplicationWorkFlowDAOImpl implements ApplicationWorkFlowDAO {
         applicationWorkFlow.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
         entityManager.persist(applicationWorkFlow);
         return applicationWorkFlow;
+    }
+
+    private void sendEmailAsync(ApplicationWorkFlow applicationWorkFlow) {
+        EmailRequest emailRequest = EmailRequest.builder()
+                .recipient("yjukebox@gmail.com")
+                .subject("Application Rejected")
+                .body(applicationWorkFlow.getComment())
+                .build();
+
+        String jsonMessage = SerializeUtil.serialize(emailRequest);
+        rabbitTemplate.convertAndSend("emailExchange", "bf123", jsonMessage);
     }
 
 

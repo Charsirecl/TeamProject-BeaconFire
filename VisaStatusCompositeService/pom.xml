@@ -99,6 +99,12 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/applicationService-0.0.1-SNAPSHOT.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.9</version>
+        </dependency>
+
 
     </dependencies>
 
