@@ -46,4 +46,37 @@ public class ApplicationWorkFlowController {
         ApplicationWorkFlow savedApplication = applicationWorkFlowService.saveApplication(applicationWorkFlow);
         return ResponseEntity.ok(savedApplication);
     }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<ApplicationWorkFlow>> getApplicationsByStatus(@PathVariable String status) {
+        List<ApplicationWorkFlow> applications = applicationWorkFlowService.getApplicationsByStatus(status);
+        return ResponseEntity.ok(applications);
+    }
+
+    @PostMapping("/status")
+    public ResponseEntity<ApplicationWorkFlow> updateApplicationStatus(
+            @RequestParam int id,
+            @RequestParam String status,
+            @RequestParam(required = false) String feedback) {
+
+        // Validate the status
+        if (!status.equalsIgnoreCase("Approved") && !status.equalsIgnoreCase("Rejected")) {
+            return ResponseEntity.badRequest().build(); // Return 400 Bad Request if the status is invalid
+        }
+
+        ApplicationWorkFlow application = applicationWorkFlowService.updateApplicationStatus(id, status, feedback);
+
+        if (application != null) {
+            return ResponseEntity.ok(application);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/status/{employeeId}")
+    public ResponseEntity<List<ApplicationWorkFlow>> getStatus(@PathVariable int employeeId) {
+        List<ApplicationWorkFlow> applications = applicationWorkFlowService.getApplicationsByEmployeeId(employeeId);
+        return ResponseEntity.ok(applications);
+    }
+
 }

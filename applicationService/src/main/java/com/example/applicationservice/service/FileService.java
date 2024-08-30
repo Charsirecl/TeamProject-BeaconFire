@@ -18,8 +18,8 @@ public class FileService {
     @Value("${aws.s3.bucket.name}")
     private String bucketName;
 
-    public String uploadFile(MultipartFile file) {
-        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+    public String uploadFile(MultipartFile file, String fileName) {
+//        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(file.getSize());
         metadata.setContentType(file.getContentType());

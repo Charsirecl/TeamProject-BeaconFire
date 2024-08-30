@@ -1,14 +1,13 @@
 package com.example.applicationservice.repository;
 
 import com.example.applicationservice.domain.ApplicationWorkFlow;
-import jakarta.persistence.TypedQuery;
+//import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,36 +43,42 @@ public class ApplicationWorkFlowDAOImpl implements ApplicationWorkFlowDAO {
     }
 
     @Override
-    public Optional<ApplicationWorkFlow> findByEmployeeID(int employeeId) {
+    public Optional<List<ApplicationWorkFlow>> findByEmployeeID(int employeeId) {
         TypedQuery<ApplicationWorkFlow> query = entityManager.createQuery(
                 "SELECT a FROM ApplicationWorkFlow a WHERE a.employeeID = :employeeId",
                 ApplicationWorkFlow.class
         );
         query.setParameter("employeeId", employeeId);
         List<ApplicationWorkFlow> results = query.getResultList();
-        return results.stream().findFirst();
+        return results.isEmpty() ? Optional.empty() : Optional.of(results);
     }
 
     @Override
     @Transactional
     public ApplicationWorkFlow save(ApplicationWorkFlow applicationWorkFlow) {
-        Optional<ApplicationWorkFlow> existingApplication = findByEmployeeID(applicationWorkFlow.getEmployeeID());
+        // Find existing applications by EmployeeID
+        Optional<List<ApplicationWorkFlow>> existingApplications = findByEmployeeID(applicationWorkFlow.getEmployeeID());
 
-        if (existingApplication.isPresent()) {
-            // Update existing application
-            ApplicationWorkFlow existing = existingApplication.get();
-            existing.setStatus(applicationWorkFlow.getStatus());
-            existing.setComment(applicationWorkFlow.getComment());
-            existing.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
-            return entityManager.merge(existing);
-        } else {
-            // Create a new application
-            applicationWorkFlow.setCreateDate(new Timestamp(System.currentTimeMillis()));
-            applicationWorkFlow.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
-            entityManager.persist(applicationWorkFlow);
-            return applicationWorkFlow;
+        if (existingApplications.isPresent() && !existingApplications.get().isEmpty()) {
+            // There are existing applications, find the one that needs updating (if any)
+            for (ApplicationWorkFlow existing : existingApplications.get()) {
+                if (existing.getStatus().equals(applicationWorkFlow.getStatus())) {
+                    // Update the existing application
+                    existing.setStatus(applicationWorkFlow.getStatus());
+                    existing.setComment(applicationWorkFlow.getComment());
+                    existing.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
+                    return entityManager.merge(existing);
+                }
+            }
         }
+
+        // If no application matches the criteria, create a new one
+        applicationWorkFlow.setCreateDate(new Timestamp(System.currentTimeMillis()));
+        applicationWorkFlow.setLastModificationDate(new Timestamp(System.currentTimeMillis()));
+        entityManager.persist(applicationWorkFlow);
+        return applicationWorkFlow;
     }
+
 
     @Override
     @Transactional
@@ -82,6 +87,13 @@ public class ApplicationWorkFlowDAOImpl implements ApplicationWorkFlowDAO {
         if (applicationWorkFlow != null) {
             entityManager.remove(applicationWorkFlow);
         }
+    }
+
+    @Override
+    public List<ApplicationWorkFlow> findByStatus(String status) {
+        TypedQuery<ApplicationWorkFlow> query = entityManager.createQuery("SELECT a FROM ApplicationWorkFlow a WHERE a.status = :status", ApplicationWorkFlow.class);
+        query.setParameter("status", status);
+        return query.getResultList();
     }
 
 }

@@ -16,7 +16,8 @@ public class FileController {
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
-        String fileUrl = fileService.uploadFile(file);
+        String title = String.format("%s_%d_%s", "OPTReceipt", 1, file.getOriginalFilename());
+        String fileUrl = fileService.uploadFile(file, title);
         return new ResponseEntity<>(fileUrl, HttpStatus.OK);
     }
 }

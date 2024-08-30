@@ -1,7 +1,8 @@
 package com.example.applicationservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
