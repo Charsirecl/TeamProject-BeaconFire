@@ -1,5 +1,6 @@
 # TeamProject-BeaconFire
 https://github.com/Charsirecl/TeamProject-BeaconFire?tab=readme-ov-file
+
 Team: Yizheng Wang, Mary Yang and Charles Li
 
 ## Overview
